@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputData : MonoBehaviour {
-
-	public int length;
+public class InputData : Data {
 
 	// Use this for initialization
 	void Start () {

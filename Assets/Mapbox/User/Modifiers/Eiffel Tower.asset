@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ade7ea2a146442b9575619cf724737, type: 3}
   m_Name: Eiffel Tower
   m_EditorClassIdentifier: 
-  Active: 1
+  Active: 0
   features:
   - Name: ChryslerBuilding
     active: 1

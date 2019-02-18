@@ -14,9 +14,12 @@ public class LightAnimation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		lightsInGame = new List<Light>();
+
+		// DEBUG
 		if (lightOnSacreCoeur) {
 			AddLight(new Vector3(-17.65f, 150.85f, -49.31f));
 		}
+		
 	}
 
 	// Update is called once per frame

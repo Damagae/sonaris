@@ -10,6 +10,7 @@ public class AnimationsManager : MonoBehaviour {
 
 	// Toutes les animations
 	public CameraAnimation cameraAnim;
+	public LightAnimation lightAnim;
 
 	// Animation Data
 	private AnimationData data;

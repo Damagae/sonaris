@@ -550,7 +550,7 @@ namespace Mapbox.Unity.Map
 			_options.locationOptions.PropertyHasChanged += (object sender, System.EventArgs eventArgs) =>
 			{
 				//take care of redraw map business...
-				UpdateMap();
+				// UpdateMap();
 			};
 
 			_options.extentOptions.PropertyHasChanged += (object sender, System.EventArgs eventArgs) =>
@@ -569,14 +569,14 @@ namespace Mapbox.Unity.Map
 			{
 				//take care of redraw map business...
 				SetPlacementStrategy();
-				UpdateMap();
+				// UpdateMap();
 			};
 
 			_options.scalingOptions.PropertyHasChanged += (object sender, System.EventArgs eventArgs) =>
 			{
 				//take care of redraw map business...
 				SetScalingStrategy();
-				UpdateMap();
+				// UpdateMap();
 			};
 
 			_mapVisualizer.Initialize(this, _fileSource);

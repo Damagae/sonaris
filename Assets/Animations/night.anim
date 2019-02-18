@@ -32,7 +32,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.r
-    path: 
+    path:
     classID: 108
     script: {fileID: 0}
   - curve:
@@ -51,7 +51,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.g
-    path: 
+    path:
     classID: 108
     script: {fileID: 0}
   - curve:
@@ -70,7 +70,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.b
-    path: 
+    path:
     classID: 108
     script: {fileID: 0}
   - curve:
@@ -89,7 +89,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: 
+    path:
     classID: 108
     script: {fileID: 0}
   - curve:
@@ -108,7 +108,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Intensity
-    path: 
+    path:
     classID: 108
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -192,7 +192,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.r
-    path: 
+    path:
     classID: 108
     script: {fileID: 0}
   - curve:
@@ -211,7 +211,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.g
-    path: 
+    path:
     classID: 108
     script: {fileID: 0}
   - curve:
@@ -230,7 +230,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.b
-    path: 
+    path:
     classID: 108
     script: {fileID: 0}
   - curve:
@@ -249,7 +249,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: 
+    path:
     classID: 108
     script: {fileID: 0}
   - curve:
@@ -268,7 +268,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Intensity
-    path: 
+    path:
     classID: 108
     script: {fileID: 0}
   m_EulerEditorCurves: []

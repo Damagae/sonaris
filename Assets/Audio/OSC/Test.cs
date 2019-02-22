@@ -18,7 +18,9 @@ public class Test : MonoBehaviour {
 	void Update () {
 		if (manager.hasWaitingMessages()) {
 			var msg = manager.getNextMessage();
-			Debug.Log(msg);
+			foreach (var element in msg.Data) {
+				Debug.Log(element);
+			}
 		}
 	}
 }

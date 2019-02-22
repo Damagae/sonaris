@@ -18,8 +18,10 @@ public class Test : MonoBehaviour {
 	void Update () {
 		if (manager.hasWaitingMessages()) {
 			var msg = manager.getNextMessage();
+			int i = 0;
 			foreach (var element in msg.Data) {
-				Debug.Log(element);
+				Debug.Log("[" + i + "] " + element);
+				++i;
 			}
 		}
 	}

@@ -3,29 +3,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// ---------------------------------------------------------------------------
+// Simulation Manager
+// Fetch the audio data from Max Live
+// Runs the neural network on the given input
+// Send the corresponding output to the Animation Manager
+// ---------------------------------------------------------------------------
 public class Simulation : MonoBehaviour {
 
 	public Brain brain;
 	public AnimationsManager animManager;
+	public SimpleReceiver simpleReceiver;
 
-	public float updateRate = 1; // An update every *updateRate* frame
+	public int updatePeriod = 200; // An update every *updatePeriod* frame
 
+	public bool train = false;
 
-	// Use this for initialization
+	private AssociativeArray<double> input;
+	private AssociativeArray<double> output;
+
 	void Start () {
+		input = new AssociativeArray<double>();
+		output = new AssociativeArray<double>();
 
+		if (train) {
+			brain.Train();
+		}
 	}
 
-	// Update is called once per frame
 	void Update () {
-		AssociativeArray<double> input = new AssociativeArray<double>();
-		var currentTime = Time.time;
-
-		if (currentTime % updateRate == 0) {
-			var output = brain.Run(input);
-			animManager.SetData(output);
+		if (Time.frameCount % updatePeriod == 0) {
+			Debug.Log("update");
+			GetInputData(); // Fetch the data from Max Live
+			if (input.Count > 0) {
+				Debug.Log(input.ToString());
+				output = brain.Run(input); // Feed it to the neural network *brain*
+				animManager.SetData(output); // Send the resulting output to the animation manager
+				animManager.Animate();
+			}
 		}
+	}
 
-
+	private void GetInputData() {
+		var data = simpleReceiver.GetData();
+		input.Clear();
+		foreach (var element in data) {
+			if (element.Count == 2) {
+				string key = (string) element[0];
+				float value = (float) element[1];
+				input.Add(key, value);
+			}
+		}
 	}
 }

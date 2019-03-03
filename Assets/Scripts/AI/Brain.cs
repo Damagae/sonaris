@@ -41,38 +41,43 @@ public class Brain : MonoBehaviour {
 	private int inputLength = 0; // Replace data[0].input.length
 	private int outputLength = 0; // Replace data[0].output.length
 
+	private InputData trainingInput;
+	private OutputData trainingOutput;
+	private string[] inputKeys;
+	private string[] outputKeys;
+
 	// Use this for initialization
 	void Start () {
-    InputData trainingInput = new InputData();
-    OutputData trainingOutput = new OutputData();
-    string[] inputKeys = {"rouge", "vert", "bleu"};
-    string[] outputKeys = {"rouge", "vert", "bleu", "jaune", "cyan", "rose", "blanc"};
-    trainingInput.Add(inputKeys, new double[] {255, 0, 0});
-    trainingOutput.Add(outputKeys, new double[] {1, 0, 0, 0, 0, 0, 0.3});
-    trainingInput.Add(inputKeys, new double[] {0, 255, 0});
-		trainingOutput.Add(outputKeys, new double[] {0, 1, 0, 0, 0, 0, 0.3});
-		trainingInput.Add(inputKeys, new double[] {0, 0, 255});
-		trainingOutput.Add(outputKeys, new double[] {0, 0, 1, 0, 0, 0, 0.3});
-		trainingInput.Add(inputKeys, new double[] {255, 255, 0});
-		trainingOutput.Add(outputKeys, new double[] {0, 0, 0, 1, 0, 0, 0.6});
-		trainingInput.Add(inputKeys, new double[] {0, 255, 255});
-		trainingOutput.Add(outputKeys, new double[] {0, 0, 0, 0, 1, 0, 0.6});
-		trainingInput.Add(inputKeys, new double[] {255, 0, 255});
-		trainingOutput.Add(outputKeys, new double[] {0, 0, 0, 0, 0, 1, 0.6});
-		trainingInput.Add(inputKeys, new double[] {255, 255, 255});
-		trainingOutput.Add(outputKeys, new double[] {0, 0, 0, 0, 0, 0, 1});
-		trainingInput.Add(inputKeys, new double[] {0, 0, 0});
-		trainingOutput.Add(outputKeys, new double[] {0, 0, 0, 0, 0, 0, 0});
-		trainingInput.Add(inputKeys, new double[] {128, 128, 128});
-		trainingOutput.Add(outputKeys, new double[] {0, 0, 0, 0, 0, 0, 0.5});
-		trainingInput.Add(inputKeys, new double[] {128, 0, 128});
-		trainingOutput.Add(outputKeys, new double[] {0, 0, 0, 0, 0, 0.5, 0.5});
-
-
-    var stats = Train(trainingInput, trainingOutput);
-		var input = new AssociativeArray<double>();
-		input.Add(inputKeys, new double[] {240, 2, 20});
-		Debug.Log(Run(input).ToString());
+    // InputData trainingInput = new InputData();
+    // OutputData trainingOutput = new OutputData();
+    // string[] inputKeys = {"rouge", "vert", "bleu"};
+    // string[] outputKeys = {"rouge", "vert", "bleu", "jaune", "cyan", "rose", "blanc"};
+    // trainingInput.Add(inputKeys, new double[] {255, 0, 0});
+    // trainingOutput.Add(outputKeys, new double[] {1, 0, 0, 0, 0, 0, 0.3});
+    // trainingInput.Add(inputKeys, new double[] {0, 255, 0});
+		// trainingOutput.Add(outputKeys, new double[] {0, 1, 0, 0, 0, 0, 0.3});
+		// trainingInput.Add(inputKeys, new double[] {0, 0, 255});
+		// trainingOutput.Add(outputKeys, new double[] {0, 0, 1, 0, 0, 0, 0.3});
+		// trainingInput.Add(inputKeys, new double[] {255, 255, 0});
+		// trainingOutput.Add(outputKeys, new double[] {0, 0, 0, 1, 0, 0, 0.6});
+		// trainingInput.Add(inputKeys, new double[] {0, 255, 255});
+		// trainingOutput.Add(outputKeys, new double[] {0, 0, 0, 0, 1, 0, 0.6});
+		// trainingInput.Add(inputKeys, new double[] {255, 0, 255});
+		// trainingOutput.Add(outputKeys, new double[] {0, 0, 0, 0, 0, 1, 0.6});
+		// trainingInput.Add(inputKeys, new double[] {255, 255, 255});
+		// trainingOutput.Add(outputKeys, new double[] {0, 0, 0, 0, 0, 0, 1});
+		// trainingInput.Add(inputKeys, new double[] {0, 0, 0});
+		// trainingOutput.Add(outputKeys, new double[] {0, 0, 0, 0, 0, 0, 0});
+		// trainingInput.Add(inputKeys, new double[] {128, 128, 128});
+		// trainingOutput.Add(outputKeys, new double[] {0, 0, 0, 0, 0, 0, 0.5});
+		// trainingInput.Add(inputKeys, new double[] {128, 0, 128});
+		// trainingOutput.Add(outputKeys, new double[] {0, 0, 0, 0, 0, 0.5, 0.5});
+		//
+		//
+    // var stats = Train(trainingInput, trainingOutput);
+		// var input = new AssociativeArray<double>();
+		// input.Add(inputKeys, new double[] {240, 2, 20});
+		// Debug.Log(Run(input).ToString());
 
 	}
 
@@ -261,6 +266,32 @@ public class Brain : MonoBehaviour {
         goOn = TrainingTick(input, output, status, endTime);
     }
 	  return status;
+	}
+
+	// Convenient function to train automatically the algorithm
+	// with our recorded data and the effects we desire corresponding to those data
+	public AssociativeArray<double> Train() {
+		trainingInput = new InputData();
+		trainingOutput = new OutputData();
+		inputKeys = new string[] {"level1", "level2", "level3", "speed1", "speed2", "speed3", "frqce1", "frqce2", "frqce3"};
+		outputKeys = new string[] {"cameraIndex", "lightIntensity", "lightR", "lightG", "lightB", "lightLocationIndex", "day"};
+
+		CreateTrainingSet(new double[] {10, 10, 10}, new double[] {10, 10, 10, 10, 10, 10, 10});
+
+		return Train(trainingInput, trainingOutput);
+	}
+
+	private void CreateTrainingSet(double[] inputValues, double[] outputValues) {
+		if (inputValues.Length == 3 && outputValues.Length == 7) {
+			trainingInput.Add(inputKeys, new double[] {inputValues[0], 0, 0, inputValues[1], 0, 0, inputValues[2], 0, 0});
+			trainingOutput.Add(outputKeys, outputValues);
+
+			trainingInput.Add(inputKeys, new double[] {0, inputValues[0], 0, 0, inputValues[1], 0, 0, inputValues[2], 0});
+			trainingOutput.Add(outputKeys, outputValues);
+
+			trainingInput.Add(inputKeys, new double[] {0, 0, inputValues[0], 0, 0, inputValues[1], 0, 0, inputValues[2]});
+			trainingOutput.Add(outputKeys, outputValues);
+		}
 	}
 
 	private List<double> RunInput(List<double> input) {

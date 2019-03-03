@@ -14,15 +14,23 @@ public class AnimationsManager : MonoBehaviour {
 
 	// Animation Data
 	private AnimationData data;
+	private AnimationData previousData;
 
 	// Use this for initialization
 	void Start () {
+		data = new AnimationData();
 
+		if (data.IsReady()) {
+			cameraAnim.SetCameraIndex(data.cameraIndex);
+			lightAnim.AddLight(data.lightLocationIndex);
+		}
+		previousData = data;
 	}
 
-	// Update is called once per frame
-	void Update () {
-		cameraAnim.SetCameraIndex(data.cameraIndex);
+	public void Animate() {
+		if (data.IsReady()) {
+			cameraAnim.SetCameraIndex(data.cameraIndex);
+		}
 	}
 
 	public void SetData(AssociativeArray<double> array) {

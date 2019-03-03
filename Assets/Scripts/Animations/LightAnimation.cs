@@ -19,7 +19,7 @@ public class LightAnimation : MonoBehaviour {
 		if (lightOnSacreCoeur) {
 			AddLight(new Vector3(-17.65f, 150.85f, -49.31f));
 		}
-		
+
 	}
 
 	// Update is called once per frame
@@ -37,7 +37,11 @@ public class LightAnimation : MonoBehaviour {
 
 	}
 
-	public void AddLight(Vector3 position) {
+	public void AddLight(int index) {
+		
+	}
+
+	private void AddLight(Vector3 position) {
 		Light light = new Light();
 		light.position = position;
 		light.go = Instantiate(lightGO);

@@ -8,12 +8,14 @@ public class SimpleReceiverExample : MonoBehaviour {
 	private OSCReciever reciever;
 
 	public int port = 57120;
+	private int openedPort;
 
 	// Use this for initialization
 	void Start () {
+		openedPort = port;
 		reciever = new OSCReciever();
-		Debug.Log("Open port " + port);
-		reciever.Open(port);
+		Debug.Log("Open port " + openedPort);
+		reciever.Open(openedPort);
 	}
 
 	// Update is called once per frame
@@ -26,7 +28,7 @@ public class SimpleReceiverExample : MonoBehaviour {
 	}
 
 	void OnDisable() {
-		Debug.Log("Close port " + port);
+		Debug.Log("Close port " + openedPort);
 		reciever.Close();
 	}
 

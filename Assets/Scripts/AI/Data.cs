@@ -29,5 +29,13 @@ public class Data {
 		length = data.Count;
 	}
 
+	public void Add(string key, double value)
+	{
+		AssociativeArray<double> aa = new AssociativeArray<double>();
+		aa.Add(key, value);
+		data.Add(aa);
+		length = data.Count;
+	}
+
 
 }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// USELESS
+// I KEEP IT ONLY FOR RECORD
 public class AudioData : MonoBehaviour {
 
 	// Niveaux
@@ -20,7 +22,7 @@ public class AudioData : MonoBehaviour {
 	public double frqce3;
 
 	public void Fill(List2D<object> array) {
-		
+
 	}
 
 	public Data GetArray() {
@@ -40,16 +42,5 @@ public class AudioData : MonoBehaviour {
 
 
 		return data;
-	}
-
-
-	// Use this for initialization
-	void Start () {
-
-	}
-
-	// Update is called once per frame
-	void Update () {
-
 	}
 }

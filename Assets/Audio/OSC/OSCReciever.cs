@@ -63,6 +63,10 @@ namespace UnityOSC
         {
             lock (_queue)
             {
+                if (_queue.Count > 2) {
+                    _queue.Clear();
+                }
+
                 if (packet.IsBundle())
                 {
                     var bundle = packet as OSCBundle;

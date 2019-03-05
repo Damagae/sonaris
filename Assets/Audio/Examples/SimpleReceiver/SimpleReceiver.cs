@@ -27,8 +27,10 @@ public class SimpleReceiver : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		OSCMessage data = GetOSCMessage();
-		UpdateData(data);
+		if (Time.frameCount % 200 == 0) {
+			OSCMessage data = GetOSCMessage();
+		}
+		// UpdateData(data);
 		// Debug.Log(string.Format("message received: {0}", DataToString(data)));
 	}
 
@@ -63,7 +65,7 @@ public class SimpleReceiver : MonoBehaviour {
 				newElement.Add(newEntry.Data[0]);
 				currentData.Add(newElement);
 			}
-		}	
+		}
 	}
 
 	private string DataToString(List<object> data)

@@ -268,15 +268,122 @@ public class Brain : MonoBehaviour {
 	  return status;
 	}
 
-	// Convenient function to train automatically the algorithm
-	// with our recorded data and the effects we desire corresponding to those data
+	// Convenient function to train automatically the algorithm with our recorded data and the effects we desire corresponding to those data
 	public AssociativeArray<double> Train() {
 		trainingInput = new InputData();
 		trainingOutput = new OutputData();
-		inputKeys = new string[] {"level1", "level2", "level3", "speed1", "speed2", "speed3", "frqce1", "frqce2", "frqce3"};
-		outputKeys = new string[] {"cameraIndex", "lightIntensity", "lightR", "lightG", "lightB", "lightLocationIndex", "day"};
+		inputKeys = new string[] {"level1", "level2", "level3",
+															"speed1", "speed2", "speed3",
+															"freq1", "freq2", "freq3"};
+		outputKeys = new string[] {	"cameraIndex1", "cameraIndex2", "cameraIndex3",
+																"cameraWeight1",  "cameraWeight2", "cameraWeight3",
+																"lightIntensity1", "lightIntensity2", "lightIntensity3",
+																"lightR1", "lightR2", "lightR3",
+																"lightG1", "lightG2", "lightG3",
+																"lightB1", "lightB2", "lightB3",
+																"lightLocationIndex1", "lightLocationIndex2", "lightLocationIndex3",
+																"day1", "day2", "day3",
+																"rain1", "rain2", "rain3" };
 
-		CreateTrainingSet(new double[] {10, 10, 10}, new double[] {10, 10, 10, 10, 10, 10, 10});
+		// Arc
+		CreateTrainingSet(new double[] { 1, 1, 0.1148437 },  new double[] { 0.29, 1, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 1, 1, 0.3353278 },  new double[] { 0.29, 1, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 1, 1, 0.3135437 },  new double[] { 0.29, 1, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 1, 1, 0.2205 }, 		 new double[] { 0.29, 1, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 1, 1, 0.09382979 }, new double[] { 0.29, 1, 0, 1, 1, 1, 0, 0, 0 });
+
+		// Louvre
+		CreateTrainingSet(new double[] { 0, 0, 0.0560712 },  new double[] { 0.29, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.0588 }, 		 new double[] { 0.29, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.2505682 },  new double[] { 0.29, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.07842988 }, new double[] { 0.29, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.20995 },    new double[] { 0.29, 0, 0, 1, 1, 1, 0, 0, 0 });
+
+		// Nuit Daft Punk
+		CreateTrainingSet(new double[] { 0, 0, 0.153125 }, 	 new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.06057692 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.05991848 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.1125 }, 		 new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.06166107 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+
+		// Opéra
+		CreateTrainingSet(new double[] { 0, 0, 0.09524839 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.2748966 },  new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.1281977 },  new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.05870607 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.1189748 },  new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+
+		// Pompidou
+		CreateTrainingSet(new double[] { 0, 0, 0.07629757 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.1002273 },  new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.1040094 },  new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.02692308 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+
+		// Tour Eiffel
+		CreateTrainingSet(new double[] { 0, 0, 0.04398271 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.119837 }, 	 new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.09369688 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.0328125 },  new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.09258222 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+
+		// Aube - Journée
+		CreateTrainingSet(new double[] { 0, 0, 0.05540201 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.0590625 },  new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.05951417 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.06057692 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.06763804 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+
+		// Circulation
+		CreateTrainingSet(new double[] { 0, 0, 0.4093753 },  new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.1466741 },  new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.05498753 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.8762763 },  new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.1645522 },  new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+
+		// Montparnasse
+		CreateTrainingSet(new double[] { 0, 0, 0.0735 }, 			new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.05742187  }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.09932432 }, 	new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.1148437 }, 	new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.1569395 }, 	new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+
+		// Restaurant
+		CreateTrainingSet(new double[] { 0, 0, 0.0984375 }, 	new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.03965827  }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.03423913 }, 	new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.08448276 }, 	new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.1860759 }, 	new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+
+		// Train
+		CreateTrainingSet(new double[] { 0, 0, 0.07090032 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.1355533  }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.05351942 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+
+		// Notre Dame
+		CreateTrainingSet(new double[] { 0, 0, 0.07301325 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.1807377 },  new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.08136531 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.2041667 },  new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.07135922 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+
+		// Jardin
+		CreateTrainingSet(new double[] { 0, 0, 2.244914 },  new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.7764084 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.0230167 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 2.19159 },   new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 1.926003 },  new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+
+		// Pluie
+		CreateTrainingSet(new double[] { 0, 0, 0.1299607 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.1641439 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.1413462 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.06176471 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+
+		// NHM
+		CreateTrainingSet(new double[] { 0, 0, 0.7391104 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.7800707 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 0.378 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
+		CreateTrainingSet(new double[] { 0, 0, 1.456707 }, new double[] { 0, 0, 0, 1, 1, 1, 0, 0, 0 });
 
 		return Train(trainingInput, trainingOutput);
 	}
@@ -284,13 +391,34 @@ public class Brain : MonoBehaviour {
 	private void CreateTrainingSet(double[] inputValues, double[] outputValues) {
 		if (inputValues.Length == 3 && outputValues.Length == 7) {
 			trainingInput.Add(inputKeys, new double[] {inputValues[0], 0, 0, inputValues[1], 0, 0, inputValues[2], 0, 0});
-			trainingOutput.Add(outputKeys, outputValues);
+			trainingOutput.Add(outputKeys, new double[] { outputValues[0], 0, 0,
+																										outputValues[1], 0, 0,
+																										outputValues[2], 0, 0,
+																										outputValues[3], 0, 0,
+																										outputValues[4], 0, 0,
+																										outputValues[5], 0, 0,
+																										outputValues[6], 0, 0,
+																										outputValues[7], 0, 0 });
 
 			trainingInput.Add(inputKeys, new double[] {0, inputValues[0], 0, 0, inputValues[1], 0, 0, inputValues[2], 0});
-			trainingOutput.Add(outputKeys, outputValues);
+			trainingOutput.Add(outputKeys, new double[] { 0, outputValues[0], 0,
+																										0, outputValues[1], 0,
+																										0, outputValues[2], 0,
+																										0, outputValues[3], 0,
+																										0, outputValues[4], 0,
+																										0, outputValues[5], 0,
+																										0, outputValues[6], 0,
+																										0, outputValues[7], 0 });
 
 			trainingInput.Add(inputKeys, new double[] {0, 0, inputValues[0], 0, 0, inputValues[1], 0, 0, inputValues[2]});
-			trainingOutput.Add(outputKeys, outputValues);
+			trainingOutput.Add(outputKeys, new double[] { 0, 0, outputValues[0],
+																										0, 0, outputValues[1],
+																										0, 0, outputValues[2],
+																										0, 0, outputValues[3],
+																										0, 0, outputValues[4],
+																										0, 0, outputValues[5],
+																										0, 0, outputValues[6],
+																										0, 0, outputValues[7] });
 		}
 	}
 

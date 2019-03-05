@@ -5,7 +5,8 @@ using UnityEngine;
 
 // ---------------------------------------------------------------------------
 // Simulation Manager
-// Fetch the audio data from Max Live
+// ******************
+// Fetch the audio data from Max MSP
 // Runs the neural network on the given input
 // Send the corresponding output to the Animation Manager
 // ---------------------------------------------------------------------------
@@ -18,6 +19,7 @@ public class Simulation : MonoBehaviour {
 	public int updatePeriod = 200; // An update every *updatePeriod* frame
 
 	public bool train = false;
+	public bool simulation = true;
 
 	private AssociativeArray<double> input;
 	private AssociativeArray<double> output;
@@ -32,14 +34,14 @@ public class Simulation : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Time.frameCount % updatePeriod == 0) {
+		if (Time.frameCount % updatePeriod == 0 && simulation) {
 			Debug.Log("update");
-			GetInputData(); // Fetch the data from Max Live
+			GetInputData(); // Fetch the data from Max MSP
 			if (input.Count > 0) {
 				Debug.Log(input.ToString());
-				output = brain.Run(input); // Feed it to the neural network *brain*
-				animManager.SetData(output); // Send the resulting output to the animation manager
-				animManager.Animate();
+				// output = brain.Run(input); // Feed it to the neural network *brain*
+				// animManager.SetData(output); // Send the resulting output to the animation manager
+				// animManager.Animate();
 			}
 		}
 	}

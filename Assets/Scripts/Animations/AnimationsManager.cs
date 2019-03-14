@@ -24,9 +24,11 @@ public class AnimationsManager : MonoBehaviour {
 	}
 
 	public void Animate() {
-		if (data.IsReady() && data != previousData) {
+		string debug = "";
+		if (data.IsReady()) {
 			// Camera
 			cameraAnim.SetCameraIndex(data.cameraIndex);
+			debug += "camera index = " + data.cameraIndex + " - ";
 
 			// Lights
 			lightAnim.RemoveLights();
@@ -37,9 +39,8 @@ public class AnimationsManager : MonoBehaviour {
 			// Day Night
 			dayAnim.SetState(data.day ? "day" : "night");
 			dayAnim.SetRain(data.rain);
-
-			previousData = data;
 		}
+		Debug.Log(debug);
 	}
 
 	public void SetData(AssociativeArray<double> array) {

@@ -30,7 +30,7 @@ namespace UnityOSC
 {
     public class OSCReciever
     {
-        Queue<OSCMessage> _queue = new Queue<OSCMessage>();
+        Stack<OSCMessage> _queue = new Stack<OSCMessage>();
         OSCServer _server;
 
         public void Open(int port)
@@ -63,9 +63,6 @@ namespace UnityOSC
         {
             lock (_queue)
             {
-                if (_queue.Count > 2) {
-                    _queue.Clear();
-                }
 
                 if (packet.IsBundle())
                 {
@@ -74,12 +71,12 @@ namespace UnityOSC
                     foreach(object obj in bundle.Data)
                     {
                         OSCMessage msg = obj as OSCMessage;
-                        _queue.Enqueue(msg);
+                        _queue.Push(msg);
                     }
                 }
                 else
                 {
-                    _queue.Enqueue(packet as OSCMessage);
+                    _queue.Push(packet as OSCMessage);
                 }
             }
         }
@@ -96,7 +93,7 @@ namespace UnityOSC
         {
             lock (_queue)
             {
-                return _queue.Dequeue();
+                return _queue.Pop();
             }
         }
     }

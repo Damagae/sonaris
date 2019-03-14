@@ -27,11 +27,8 @@ public class SimpleReceiver : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Time.frameCount % 200 == 0) {
-			OSCMessage data = GetOSCMessage();
-		}
-		// UpdateData(data);
-		// Debug.Log(string.Format("message received: {0}", DataToString(data)));
+		OSCMessage data = GetOSCMessage();
+		UpdateData(data);
 	}
 
 	public List2D<object> GetData() {
@@ -41,7 +38,9 @@ public class SimpleReceiver : MonoBehaviour {
 	public OSCMessage GetOSCMessage() {
 		if(reciever.hasWaitingMessages()){
 			OSCMessage msg = reciever.getNextMessage();
-			Debug.Log(string.Format("message received: {0} {1}", msg.Address, DataToString(msg.Data)));
+			// if (msg.Data[0].ToString() != "0") {
+			// 	Debug.Log(string.Format("message received: {0} {1}", msg.Address, DataToString(msg.Data)));
+			// }
 			return msg;
 		}
 		return null;
@@ -53,9 +52,11 @@ public class SimpleReceiver : MonoBehaviour {
 	}
 
 	private void UpdateData(OSCMessage newEntry) {
-		foreach (var element in currentData) {
-			if (newEntry != null && (string) element[0] == (string) newEntry.Address) {
-				currentData.Remove(element);
+		if (currentData.Count > 0) {
+			for (int i = 0; i < currentData.Count; ++i) {
+				if (newEntry != null && (string) currentData[i][0] == (string) newEntry.Address) {
+					currentData.Remove(currentData[i]);
+				}
 			}
 		}
 		if (newEntry != null) {

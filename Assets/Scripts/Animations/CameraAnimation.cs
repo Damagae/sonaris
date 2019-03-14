@@ -18,6 +18,7 @@ public class CameraAnimation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (animator.GetInteger("index") != indexPos) {
+			Debug.Log("Camera " + indexPos);
 			animator.SetInteger("index", indexPos);
 		}
 	}

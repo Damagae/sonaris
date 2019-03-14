@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.8352941, g: 0.9697295, b: 1, a: 1}
+  m_FogColor: {r: 0.8679245, g: 0.6673193, b: 0.8104347, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.003
+  m_FogDensity: 0.0015
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -343,7 +343,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 16.12
+  m_Intensity: 0
   m_Range: 42.6
   m_SpotAngle: 52.7
   m_CookieSize: 10
@@ -639,7 +639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621ed50ab22ff1747bfe5da8e35df1a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indexPos: 20
+  indexPos: 35
 --- !u!81 &264992335
 AudioListener:
   m_ObjectHideFlags: 0
@@ -757,7 +757,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 16.2
+  m_Intensity: 0
   m_Range: 40.9
   m_SpotAngle: 30.6
   m_CookieSize: 10
@@ -823,7 +823,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 16.12
+  m_Intensity: 0
   m_Range: 39.8
   m_SpotAngle: 52.7
   m_CookieSize: 10
@@ -1197,7 +1197,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 27.2
+  m_Intensity: 0
   m_Range: 51.2
   m_SpotAngle: 73.9
   m_CookieSize: 10
@@ -1285,7 +1285,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
+  m_TargetDisplay: 1
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -1513,7 +1513,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightGO: {fileID: 384501417}
   rainGO: {fileID: 642494232}
-  day: 1
 --- !u!4 &528941445
 Transform:
   m_ObjectHideFlags: 0
@@ -1566,7 +1565,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 16.12
+  m_Intensity: 0
   m_Range: 39.6
   m_SpotAngle: 52.7
   m_CookieSize: 10
@@ -1944,7 +1943,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 16.12
+  m_Intensity: 0
   m_Range: 62.7
   m_SpotAngle: 29.7
   m_CookieSize: 10
@@ -2887,7 +2886,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 27.2
+  m_Intensity: 0
   m_Range: 51.2
   m_SpotAngle: 73.9
   m_CookieSize: 10
@@ -3193,7 +3192,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 16.2
+  m_Intensity: 0
   m_Range: 42.6
   m_SpotAngle: 52.7
   m_CookieSize: 10
@@ -3523,7 +3522,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 27.2
+  m_Intensity: 0
   m_Range: 51.2
   m_SpotAngle: 73.9
   m_CookieSize: 10
@@ -3595,7 +3594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88d770fa5d94534293342285b1e8435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  port: 9001
+  port: 57120
 --- !u!1001 &1170456473
 Prefab:
   m_ObjectHideFlags: 0
@@ -4388,7 +4387,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 16.12
+  m_Intensity: 0
   m_Range: 97.5
   m_SpotAngle: 57.1
   m_CookieSize: 10
@@ -5087,8 +5086,8 @@ MonoBehaviour:
   animManager: {fileID: 1293727989}
   simpleReceiver: {fileID: 1165354519}
   updatePeriod: 200
-  train: 0
-  simulation: 0
+  train: 1
+  simulation: 1
 --- !u!4 &1915150784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 468086, guid: da60e5460ab2b4a479d4ac2293e0c824,
@@ -5345,7 +5344,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 16.12
+  m_Intensity: 0
   m_Range: 37.1
   m_SpotAngle: 52.7
   m_CookieSize: 10
@@ -5641,7 +5640,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 16.12
+  m_Intensity: 0
   m_Range: 30
   m_SpotAngle: 52.7
   m_CookieSize: 10

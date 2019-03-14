@@ -25,23 +25,27 @@ public class Simulation : MonoBehaviour {
 	private AssociativeArray<double> output;
 
 	void Start () {
+
 		input = new AssociativeArray<double>();
 		output = new AssociativeArray<double>();
 
 		if (train) {
 			brain.Train();
 		}
+
 	}
 
 	void Update () {
-		if (Time.frameCount % updatePeriod == 0 && simulation) {
-			Debug.Log("update");
+		if (brain.IsReady()) {
 			GetInputData(); // Fetch the data from Max MSP
-			if (input.Count > 0) {
-				Debug.Log(input.ToString());
-				// output = brain.Run(input); // Feed it to the neural network *brain*
-				// animManager.SetData(output); // Send the resulting output to the animation manager
-				// animManager.Animate();
+			// Debug.Log(input.ToString());
+			if (Time.frameCount % updatePeriod == 0 && simulation) {
+				Debug.Log("Update ---------------------------------------------");
+				if (input.Count > 0) {
+					output = brain.Run(input); // Feed it to the neural network *brain*
+					animManager.SetData(output); // Send the resulting output to the animation manager
+					animManager.Animate();
+				}
 			}
 		}
 	}
@@ -53,7 +57,16 @@ public class Simulation : MonoBehaviour {
 			if (element.Count == 2) {
 				string key = (string) element[0];
 				float value = (float) element[1];
-				input.Add(key, value);
+				bool nullFrequence = (key == "freq1" || key == "freq2" || key == "freq3") && value == 0;
+				// If any of the frequence is null, it's not saved
+				if (!nullFrequence) {
+					Debug.Log(key + " : " + value);
+					if (input.ContainsKey(key)) {
+						input[key] = value;
+					} else {
+						input.Add(key, value);
+					}
+				}
 			}
 		}
 	}

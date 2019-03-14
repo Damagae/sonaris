@@ -19,42 +19,51 @@ public class DayNightAnimation : MonoBehaviour {
 
 	private string state = "day";
 
-	// DEBUG
-	public bool day = true;
+	private bool day = true;
 
 	// Use this for initialization
 	void Start () {
 		lightAnim = lightGO.GetComponent<Animator>();
 
-		dayFogColor = new Color(0.835f, 0.984f, 1, 1);
-		rainDayFogColor = new Color(0.835f, 0.984f, 1, 1);
+		// dayFogColor = new Color(0.835f, 0.984f, 1, 1);
+		// rainDayFogColor = new Color(0.835f, 0.984f, 1, 1);
+		//
+		// nightFogColor = new Color(0.56f, 0.533f, 0.878f, 1);
+		// rainNightFogColor = new Color(0.56f, 0.533f, 0.878f, 1);
 
-		nightFogColor = new Color(0.56f, 0.533f, 0.878f, 1);
-		rainNightFogColor = new Color(0.56f, 0.533f, 0.878f, 1);
+		Color pollution = new Color(0.8679245f, 0.6673193f, 8104347f, 1);
+
+		dayFogColor = pollution;
+		rainDayFogColor = pollution;
+
+		nightFogColor = pollution;
+		rainNightFogColor = pollution;
 
 		RenderSettings.fogColor = dayFogColor;
 	}
 
 	private void SetDayOn() {
+		Debug.Log("Day");
 		// Light day
 		lightAnim.SetBool("day", true);
-		if (rain) {
-			AnimateFog(rainNightFogColor, rainDayFogColor);
-		} else {
-			AnimateFog(nightFogColor, dayFogColor);
-		}
+		// if (rain) {
+		// 	AnimateFog(rainNightFogColor, rainDayFogColor);
+		// } else {
+		// 	AnimateFog(nightFogColor, dayFogColor);
+		// }
 		// RenderSettings.fogColor = dayFogColor;
 
 	}
 
 	private void SetNightOn() {
+		Debug.Log("Night");
 		// Light moon
 		lightAnim.SetBool("day", false);
-		if (rain) {
-			AnimateFog(rainDayFogColor, rainNightFogColor);
-		} else {
-			AnimateFog(dayFogColor, nightFogColor);
-		}
+		// if (rain) {
+		// 	AnimateFog(rainDayFogColor, rainNightFogColor);
+		// } else {
+		// 	AnimateFog(dayFogColor, nightFogColor);
+		// }
 		// RenderSettings.fogColor = nightFogColor;
 	}
 
@@ -69,7 +78,6 @@ public class DayNightAnimation : MonoBehaviour {
 	}
 
 	private void AnimateFog(Color current, Color target) {
-		Debug.Log("animation");
 		RenderSettings.fogColor = Color.Lerp(current, target, Mathf.PingPong(Time.time, 1));
 	}
 
@@ -79,11 +87,13 @@ public class DayNightAnimation : MonoBehaviour {
 	void Update () {
 
 		if (day && state == "night") {
-			SetDayOn();
-			state = "day";
-		} else if (!day && state == "day") {
 			SetNightOn();
 			state = "night";
+			day = false;
+		} else if (!day && state == "day") {
+			SetDayOn();
+			state = "day";
+			day = true;
 		}
 
 		if (rain) {
